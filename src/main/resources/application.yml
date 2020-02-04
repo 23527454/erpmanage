@@ -1,0 +1,43 @@
+#配置数据源的属性
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/erpmanage?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=UTC&serverTimezone=GMT%2B8
+    username: root
+    password: root
+    max-active: 20
+    max-wait: 5000
+    initial-size: 1
+    filters: stat,log4j,wall
+    validationQuery: SELECT 'x'   #验证连接
+    enable: true
+  #thymeleaf的配置
+  #thymeleaf:
+    #cache: false
+    #enabled: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    #redis连接信息
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    timeout: 5000
+  thymeleaf:
+    cache: false
+
+#配置mybatisplus
+mybatis-plus:
+  mapper-locations:
+    - classpath:com/demo/erpmanage/*/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+    banner: true
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+server:
+  port: 8080
+
+
